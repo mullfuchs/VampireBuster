@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://bt0m7fahlwwhn"]
+[gd_scene format=3 uid="uid://bt0m7fahlwwhn"]
 
 [ext_resource type="Script" uid="uid://cs1yvbjtnvljp" path="res://Scripts/Components/StateMachine/state_machine.gd" id="1_tx1dd"]
 [ext_resource type="Script" uid="uid://cnyxd33tkv1p" path="res://Scripts/Entities/Player/player.gd" id="1_y6uwr"]
@@ -229,12 +229,12 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_by7i4"]
 graph_offset = Vector2(-233.236, 29.0862)
+nodes/output/position = Vector2(520, 140)
 nodes/Subweapon/node = SubResource("AnimationNodeBlendSpace2D_qvbpb")
 nodes/Subweapon/position = Vector2(40, 120)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_sscpr")
 nodes/TimeScale/position = Vector2(280, 120)
-nodes/output/position = Vector2(520, 140)
-node_connections = [&"TimeScale", 0, &"Subweapon", &"output", 0, &"TimeScale"]
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Subweapon"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wpjfl"]
 advance_mode = 2
@@ -3056,27 +3056,27 @@ _data = {
 &"subweapon_use_right_jump": SubResource("Animation_n1x1j")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("_animationTree") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=111091202 node_paths=PackedStringArray("_animationTree") groups=["player"]]
 collision_layer = 4
 collision_mask = 4115
 script = ExtResource("1_y6uwr")
 player_resource = ExtResource("4_7dp3o")
 _animationTree = NodePath("Animation/AnimationTree")
 
-[node name="Collider" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=1824478608]
 position = Vector2(0, -13.5)
 shape = SubResource("CapsuleShape2D_e6mvm")
 
-[node name="Components" type="Node" parent="."]
+[node name="Components" type="Node" parent="." unique_id=585604515]
 
-[node name="Health" type="Node" parent="Components" node_paths=PackedStringArray("hurtbox")]
+[node name="Health" type="Node" parent="Components" unique_id=349330865 node_paths=PackedStringArray("hurtbox")]
 script = ExtResource("3_83xs0")
 max_health = 3.0
 invincible_time = 1.0
 hurtbox = NodePath("../../Contact/Hurtbox")
 metadata/_custom_type_script = "uid://5byn62y1oa76"
 
-[node name="Flicker" type="Node" parent="Components" node_paths=PackedStringArray("targeted_sprites")]
+[node name="Flicker" type="Node" parent="Components" unique_id=1820952401 node_paths=PackedStringArray("targeted_sprites")]
 script = ExtResource("4_sweqm")
 targeted_sprites = [NodePath("../../Sprites/Upper"), NodePath("../../Sprites/Lower"), NodePath("../../Sprites/Whip")]
 flicker_color = Color(0.870588, 0, 0, 1)
@@ -3084,120 +3084,120 @@ flicker_times = 4
 time_per_single_flicker = 0.3
 metadata/_custom_type_script = "uid://coh7npk3nxwn6"
 
-[node name="Managers" type="Node" parent="."]
+[node name="Managers" type="Node" parent="." unique_id=1104811020]
 
-[node name="Subweapon Manager" type="Node" parent="Managers" node_paths=PackedStringArray("animation_tree")]
+[node name="Subweapon Manager" type="Node" parent="Managers" unique_id=1280377078 node_paths=PackedStringArray("animation_tree")]
 script = ExtResource("5_ph33w")
 starting_uses = 20
 animation_tree = NodePath("../../Animation/AnimationTree")
 
-[node name="DelayTimer" type="Timer" parent="Managers/Subweapon Manager"]
+[node name="DelayTimer" type="Timer" parent="Managers/Subweapon Manager" unique_id=859644161]
 one_shot = true
 
-[node name="CooldownTimer" type="Timer" parent="Managers/Subweapon Manager"]
+[node name="CooldownTimer" type="Timer" parent="Managers/Subweapon Manager" unique_id=2087670274]
 one_shot = true
 
-[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="FSM" type="Node" parent="." unique_id=1829113816 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_tx1dd")
 initial_state = NodePath("Normal")
 player_resource = ExtResource("4_7dp3o")
 
-[node name="Normal" type="Node" parent="FSM" node_paths=PackedStringArray("character_body", "animation_tree", "subweapon_manager", "stair_area")]
+[node name="Normal" type="Node" parent="FSM" unique_id=1703297965 node_paths=PackedStringArray("character_body", "animation_tree", "subweapon_manager", "stair_area")]
 script = ExtResource("2_gymyn")
 character_body = NodePath("../..")
 animation_tree = NodePath("../../Animation/AnimationTree")
 subweapon_manager = NodePath("../../Managers/Subweapon Manager")
 stair_area = NodePath("../../Contact/InteractArea")
 
-[node name="Stairs" type="Node" parent="FSM" node_paths=PackedStringArray("controller", "area", "animation_tree", "sprite_list")]
+[node name="Stairs" type="Node" parent="FSM" unique_id=1648536799 node_paths=PackedStringArray("controller", "area", "animation_tree", "sprite_list")]
 script = ExtResource("8_7ldla")
 controller = NodePath("../..")
 area = NodePath("../../Contact/InteractArea")
 animation_tree = NodePath("../../Animation/AnimationTree")
 sprite_list = [NodePath("../../Sprites/Upper"), NodePath("../../Sprites/Lower")]
 
-[node name="Attack" type="Node" parent="FSM" node_paths=PackedStringArray("_body2D", "_attackTimer", "_animationTree")]
+[node name="Attack" type="Node" parent="FSM" unique_id=775563349 node_paths=PackedStringArray("_body2D", "_attackTimer", "_animationTree")]
 script = ExtResource("3_ukyrk")
 _body2D = NodePath("../..")
 _attackTimer = NodePath("../../Timers/AttackTimer")
 _animationTree = NodePath("../../Animation/AnimationTree")
 
-[node name="Crouch" type="Node" parent="FSM" node_paths=PackedStringArray("_animationTree")]
+[node name="Crouch" type="Node" parent="FSM" unique_id=940425493 node_paths=PackedStringArray("_animationTree")]
 script = ExtResource("5_p1odr")
 _animationTree = NodePath("../../Animation/AnimationTree")
 
-[node name="Damaged" type="Node" parent="FSM" node_paths=PackedStringArray("spritetest", "health")]
+[node name="Damaged" type="Node" parent="FSM" unique_id=2064953780 node_paths=PackedStringArray("spritetest", "health")]
 script = ExtResource("8_wohnl")
 spritetest = NodePath("../../Sprites/Upper")
 texture = ExtResource("33_yh6i2")
 health = NodePath("../../Components/Health")
 
-[node name="Dead" type="Node" parent="FSM" node_paths=PackedStringArray("_animationTree", "_deadTimer")]
+[node name="Dead" type="Node" parent="FSM" unique_id=1124687870 node_paths=PackedStringArray("_animationTree", "_deadTimer")]
 script = ExtResource("6_vfarp")
 _animationTree = NodePath("../../Animation/AnimationTree")
 _deadTimer = NodePath("../../Timers/DeadTimer")
 
-[node name="Contact" type="Node2D" parent="."]
+[node name="Contact" type="Node2D" parent="." unique_id=57266604]
 position = Vector2(0, -15)
 
-[node name="Hitbox" type="Area2D" parent="Contact"]
+[node name="Hitbox" type="Area2D" parent="Contact" unique_id=1428634009]
 collision_layer = 32
 collision_mask = 520
 script = ExtResource("10_xuaoq")
 metadata/_custom_type_script = "uid://dntc3c582m5w8"
 
-[node name="Collider" type="CollisionShape2D" parent="Contact/Hitbox"]
+[node name="Collider" type="CollisionShape2D" parent="Contact/Hitbox" unique_id=2004472450]
 position = Vector2(-26.25, -5.25)
 shape = SubResource("RectangleShape2D_xuaoq")
 disabled = true
 
-[node name="Hurtbox" type="Area2D" parent="Contact" node_paths=PackedStringArray("health")]
+[node name="Hurtbox" type="Area2D" parent="Contact" unique_id=1134935701 node_paths=PackedStringArray("health")]
 collision_layer = 4
 collision_mask = 8
 script = ExtResource("3_ypfnu")
 health = NodePath("../../Components/Health")
 metadata/_custom_type_script = "uid://dq5h6yydckjc1"
 
-[node name="Collider" type="CollisionShape2D" parent="Contact/Hurtbox"]
+[node name="Collider" type="CollisionShape2D" parent="Contact/Hurtbox" unique_id=1966510317]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="InteractArea" type="Area2D" parent="Contact"]
+[node name="InteractArea" type="Area2D" parent="Contact" unique_id=1964218674]
 collision_layer = 0
 collision_mask = 2048
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Contact/InteractArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Contact/InteractArea" unique_id=1889902773]
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_7ldla")
 debug_color = Color(0.366382, 0.61246, 0.197709, 0.42)
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="Sprites" type="Node2D" parent="." unique_id=799734510]
 position = Vector2(0, -16)
 
-[node name="Upper" type="Sprite2D" parent="Sprites"]
+[node name="Upper" type="Sprite2D" parent="Sprites" unique_id=2110891232]
 texture_filter = 1
 position = Vector2(0, -8)
 texture = ExtResource("3_vgqql")
 
-[node name="Lower" type="Sprite2D" parent="Sprites"]
+[node name="Lower" type="Sprite2D" parent="Sprites" unique_id=1470184607]
 texture_filter = 1
 position = Vector2(0, 8)
 texture = ExtResource("4_fkybt")
 
-[node name="Whip" type="Sprite2D" parent="Sprites"]
+[node name="Whip" type="Sprite2D" parent="Sprites" unique_id=687518995]
 visible = false
 texture_filter = 1
 position = Vector2(-27, 0)
 texture = ExtResource("7_2ijsl")
 
-[node name="FullBody" type="Sprite2D" parent="Sprites"]
+[node name="FullBody" type="Sprite2D" parent="Sprites" unique_id=533515277]
 visible = false
 texture_filter = 1
 texture = ExtResource("9_0gysh")
 
-[node name="Animation" type="Node" parent="."]
+[node name="Animation" type="Node" parent="." unique_id=645012753]
 
-[node name="AnimationTree" type="AnimationTree" parent="Animation"]
+[node name="AnimationTree" type="AnimationTree" parent="Animation" unique_id=1194095926]
 tree_root = SubResource("AnimationNodeStateMachine_vgqql")
 advance_expression_base_node = NodePath("../..")
 anim_player = NodePath("../AnimationPlayer")
@@ -3221,28 +3221,26 @@ parameters/Stairs/blend_position = Vector2(-0.994307, 0.990244)
 parameters/UseSubweapon/Subweapon/blend_position = Vector2(0, 0)
 parameters/UseSubweapon/TimeScale/scale = 1.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation"]
-libraries = {
-&"": SubResource("AnimationLibrary_x3wgy")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation" unique_id=51587802]
+libraries/ = SubResource("AnimationLibrary_x3wgy")
 
-[node name="Timers" type="Node" parent="."]
+[node name="Timers" type="Node" parent="." unique_id=2035224313]
 
-[node name="AttackTimer" type="Timer" parent="Timers"]
+[node name="AttackTimer" type="Timer" parent="Timers" unique_id=1828340177]
 
-[node name="DeadTimer" type="Timer" parent="Timers"]
+[node name="DeadTimer" type="Timer" parent="Timers" unique_id=1673993152]
 one_shot = true
 
-[node name="SubweaponCooldownTimer" type="Timer" parent="Timers"]
+[node name="SubweaponCooldownTimer" type="Timer" parent="Timers" unique_id=505814735]
 one_shot = true
 
-[node name="Sounds" type="Node2D" parent="."]
+[node name="Sounds" type="Node2D" parent="." unique_id=914059024]
 
-[node name="StepEmitter" type="FmodEventEmitter2D" parent="Sounds"]
+[node name="StepEmitter" type="FmodEventEmitter2D" parent="Sounds" unique_id=211647574]
 event_name = "event:/SFX/Step"
 event_guid = "{8dec74d4-7c84-49df-9d96-d35987331aab}"
 
-[node name="WhipAttackEmitter" type="FmodEventEmitter2D" parent="Sounds"]
+[node name="WhipAttackEmitter" type="FmodEventEmitter2D" parent="Sounds" unique_id=626702572]
 event_name = "event:/SFX/AttackWhip"
 event_guid = "{461c6d59-300f-47af-9efa-4f5dbaa2f5a5}"
 

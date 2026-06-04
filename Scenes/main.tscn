@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://cqscvl3qsinqc"]
+[gd_scene format=4 uid="uid://cqscvl3qsinqc"]
 
 [ext_resource type="Texture2D" uid="uid://de12hl6rn1ppj" path="res://Sprites/UI/inbetween.png" id="1_hdf80"]
 [ext_resource type="Texture2D" uid="uid://gfe4ej8yt3w4" path="res://Sprites/UI/bat1.png" id="3_jwpg7"]
@@ -187,11 +187,10 @@ _data = {
 &"start": SubResource("Animation_jwpg7")
 }
 
-[sub_resource type="Resource" id="Resource_8cuat"]
+[sub_resource type="Resource" id="Resource_536cc"]
 resource_local_to_scene = true
 script = ExtResource("10_aqgau")
 Speed = 80.0
-LastDirection = 1.0
 stair_movement_multiplier = 2.2
 Gravity = 459.0
 FallingCap = 9108.0
@@ -496,6 +495,15 @@ font_name = "Nintendo NES Font"
 style_name = "Regular"
 subpixel_positioning = 0
 msdf_pixel_range = 8
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
 cache/0/16/0/ascent = 14.0
 cache/0/16/0/descent = 2.0
 cache/0/16/0/underline_position = -1.20313
@@ -1269,12 +1277,12 @@ _data = {
 &"transition": SubResource("Animation_aqgau")
 }
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=321780359]
 texture_filter = 1
 
-[node name="Level" type="Node2D" parent="."]
+[node name="Level" type="Node2D" parent="." unique_id=1109490072]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=882631087]
 position = Vector2(0, -2)
 zoom = Vector2(4, 4)
 process_callback = 0
@@ -1282,48 +1290,46 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="TopArea" type="Area2D" parent="Camera2D"]
+[node name="TopArea" type="Area2D" parent="Camera2D" unique_id=27544130]
 position = Vector2(0, -62)
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/TopArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/TopArea" unique_id=1830228036]
 shape = SubResource("RectangleShape2D_hdf80")
 
-[node name="BottomArea" type="Area2D" parent="Camera2D"]
+[node name="BottomArea" type="Area2D" parent="Camera2D" unique_id=851531224]
 position = Vector2(0, 62)
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/BottomArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/BottomArea" unique_id=884053911]
 shape = SubResource("RectangleShape2D_hdf80")
 
-[node name="Managers" type="Node" parent="."]
+[node name="Managers" type="Node" parent="." unique_id=648438332]
 
-[node name="DoorTransitionManager" type="Node" parent="Managers" node_paths=PackedStringArray("camera", "player")]
+[node name="DoorTransitionManager" type="Node" parent="Managers" unique_id=20456969 node_paths=PackedStringArray("camera", "player")]
 script = ExtResource("6_gt3je")
 camera = NodePath("../../Camera2D")
 player = NodePath("../../Player")
 
-[node name="DummyPlayer" type="Node2D" parent="Managers/DoorTransitionManager"]
+[node name="DummyPlayer" type="Node2D" parent="Managers/DoorTransitionManager" unique_id=1542685204]
 z_index = 2
 texture_filter = 1
 position = Vector2(544, 24)
 
-[node name="Sprite2D" type="Sprite2D" parent="Managers/DoorTransitionManager/DummyPlayer"]
+[node name="Sprite2D" type="Sprite2D" parent="Managers/DoorTransitionManager/DummyPlayer" unique_id=1103198731]
 position = Vector2(0, -16)
 texture = ExtResource("7_3pmx8")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Managers/DoorTransitionManager/DummyPlayer"]
-libraries = {
-&"": SubResource("AnimationLibrary_e08e2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Managers/DoorTransitionManager/DummyPlayer" unique_id=227838669]
+libraries/ = SubResource("AnimationLibrary_e08e2")
 
-[node name="TransitionManager" type="CanvasLayer" parent="Managers"]
+[node name="TransitionManager" type="CanvasLayer" parent="Managers" unique_id=1499711545]
 layer = 10
 script = ExtResource("10_kltya")
 
-[node name="Control" type="Control" parent="Managers/TransitionManager"]
+[node name="Control" type="Control" parent="Managers/TransitionManager" unique_id=2007995836]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -1338,7 +1344,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Managers/TransitionManager/Control"]
+[node name="ColorRect" type="ColorRect" parent="Managers/TransitionManager/Control" unique_id=2085101193]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1348,32 +1354,31 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Managers/TransitionManager/Control"]
-libraries = {
-&"": SubResource("AnimationLibrary_aqgau")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Managers/TransitionManager/Control" unique_id=521947493]
+libraries/ = SubResource("AnimationLibrary_aqgau")
 
-[node name="CameraManager" type="Node" parent="Managers" node_paths=PackedStringArray("camera", "level_parent", "player")]
+[node name="CameraManager" type="Node" parent="Managers" unique_id=971626964 node_paths=PackedStringArray("camera", "level_parent", "player")]
 script = ExtResource("10_neg2b")
 camera = NodePath("../../Camera2D")
 level_parent = NodePath("../../Level")
 player = NodePath("../../Player")
 
-[node name="Audio" type="Node2D" parent="."]
+[node name="Audio" type="Node2D" parent="." unique_id=1178955286]
+visible = false
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="Audio"]
+[node name="FmodBankLoader" type="FmodBankLoader" parent="Audio" unique_id=646660126]
 bank_paths = ["res://Banks/Desktop/Master.strings.bank", "res://Banks/Desktop/Master.bank", "res://Banks/Desktop/MUSIC.bank", "res://Banks/Desktop/SFX.bank"]
 
-[node name="FmodListener2D" type="FmodListener2D" parent="Audio"]
+[node name="FmodListener2D" type="FmodListener2D" parent="Audio" unique_id=502643484]
 
-[node name="Player" parent="." instance=ExtResource("8_536cc")]
+[node name="Player" parent="." unique_id=1209957010 instance=ExtResource("8_536cc")]
 z_index = 5
 position = Vector2(-272, 40)
-player_resource = SubResource("Resource_8cuat")
+player_resource = SubResource("Resource_536cc")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=172698032]
 
-[node name="Menu" type="Control" parent="UI"]
+[node name="Menu" type="Control" parent="UI" unique_id=886877388]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1385,7 +1390,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("28_6vcvc")
 
-[node name="ColorRect" type="ColorRect" parent="UI/Menu"]
+[node name="ColorRect" type="ColorRect" parent="UI/Menu" unique_id=209069103]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1394,12 +1399,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Template" type="Sprite2D" parent="UI/Menu"]
+[node name="Template" type="Sprite2D" parent="UI/Menu" unique_id=30921396]
 position = Vector2(636, 386)
 scale = Vector2(0.762846, 0.762846)
 texture = ExtResource("28_7k868")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Menu" unique_id=2001261317]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1411,25 +1416,25 @@ offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Play Button" type="Button" parent="UI/Menu/VBoxContainer"]
+[node name="Play Button" type="Button" parent="UI/Menu/VBoxContainer" unique_id=1259148595]
 layout_mode = 2
 theme = ExtResource("28_ueoa1")
 text = "PUSH START KEY"
 flat = true
 
-[node name="Go to Gameplay" type="Button" parent="UI/Menu/VBoxContainer"]
+[node name="Go to Gameplay" type="Button" parent="UI/Menu/VBoxContainer" unique_id=1769899389]
 layout_mode = 2
 theme = ExtResource("28_ueoa1")
 text = "QUICK START"
 flat = true
 
-[node name="Delete Save" type="Button" parent="UI/Menu/VBoxContainer"]
+[node name="Delete Save" type="Button" parent="UI/Menu/VBoxContainer" unique_id=961872954]
 layout_mode = 2
 theme = ExtResource("28_ueoa1")
 text = "DELETE SAVE"
 flat = true
 
-[node name="Intro" type="Control" parent="UI"]
+[node name="Intro" type="Control" parent="UI" unique_id=622481329]
 visible = false
 texture_filter = 1
 layout_mode = 3
@@ -1450,34 +1455,32 @@ size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("16_hpc6h")
 
-[node name="Background" type="Sprite2D" parent="UI/Intro"]
+[node name="Background" type="Sprite2D" parent="UI/Intro" unique_id=64595610]
 position = Vector2(160, 71)
 scale = Vector2(1, 160)
 texture = SubResource("GradientTexture1D_8cuat")
 
-[node name="Mist" type="Sprite2D" parent="UI/Intro"]
+[node name="Mist" type="Sprite2D" parent="UI/Intro" unique_id=1542430598]
 position = Vector2(196, 44)
 texture = ExtResource("15_k2e45")
 
-[node name="Moon" type="Sprite2D" parent="UI/Intro"]
+[node name="Moon" type="Sprite2D" parent="UI/Intro" unique_id=426806492]
 position = Vector2(256, 22)
 texture = ExtResource("16_536cc")
 
-[node name="Castle" type="Sprite2D" parent="UI/Intro"]
+[node name="Castle" type="Sprite2D" parent="UI/Intro" unique_id=741855472]
 position = Vector2(160, 86)
 texture = ExtResource("15_hdf80")
 
-[node name="Player" type="Sprite2D" parent="UI/Intro"]
+[node name="Player" type="Sprite2D" parent="UI/Intro" unique_id=892612637]
 position = Vector2(83, 144)
 texture = ExtResource("7_3pmx8")
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Intro"]
-libraries = {
-&"": SubResource("AnimationLibrary_hdf80")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Intro" unique_id=617102399]
+libraries/ = SubResource("AnimationLibrary_hdf80")
 
-[node name="Gameplay" type="Control" parent="UI" node_paths=PackedStringArray("target_control")]
+[node name="Gameplay" type="Control" parent="UI" unique_id=1022121385 node_paths=PackedStringArray("target_control")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -1492,21 +1495,21 @@ mouse_filter = 2
 script = ExtResource("18_kltya")
 target_control = NodePath("Top/Info")
 
-[node name="Top" type="Control" parent="UI/Gameplay"]
+[node name="Top" type="Control" parent="UI/Gameplay" unique_id=2082880566]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 104.0
 grow_horizontal = 2
 
-[node name="Info" type="Control" parent="UI/Gameplay/Top"]
+[node name="Info" type="Control" parent="UI/Gameplay/Top" unique_id=437910727]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 80.0
 grow_horizontal = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/Gameplay/Top/Info"]
+[node name="ColorRect" type="ColorRect" parent="UI/Gameplay/Top/Info" unique_id=649757169]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1515,7 +1518,7 @@ grow_horizontal = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="SubWeapon" type="Control" parent="UI/Gameplay/Top/Info" node_paths=PackedStringArray("icon_texture_rect")]
+[node name="SubWeapon" type="Control" parent="UI/Gameplay/Top/Info" unique_id=551631224 node_paths=PackedStringArray("icon_texture_rect")]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
@@ -1526,7 +1529,7 @@ mouse_filter = 2
 script = ExtResource("8_hptm8")
 icon_texture_rect = NodePath("Icon")
 
-[node name="Icon" type="TextureRect" parent="UI/Gameplay/Top/Info/SubWeapon"]
+[node name="Icon" type="TextureRect" parent="UI/Gameplay/Top/Info/SubWeapon" unique_id=1546262644]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1539,7 +1542,7 @@ grow_horizontal = 2
 texture = ExtResource("8_ynf5e")
 expand_mode = 3
 
-[node name="Overlay" type="TextureRect" parent="UI/Gameplay/Top/Info/SubWeapon"]
+[node name="Overlay" type="TextureRect" parent="UI/Gameplay/Top/Info/SubWeapon" unique_id=1340640857]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1552,7 +1555,7 @@ grow_horizontal = 2
 texture = ExtResource("8_344ge")
 expand_mode = 3
 
-[node name="Ammo" type="Control" parent="UI/Gameplay/Top/Info" node_paths=PackedStringArray("label", "player")]
+[node name="Ammo" type="Control" parent="UI/Gameplay/Top/Info" unique_id=568964926 node_paths=PackedStringArray("label", "player")]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 5
@@ -1570,7 +1573,7 @@ script = ExtResource("13_wsu2k")
 label = NodePath("Label")
 player = NodePath("../../../../../Player")
 
-[node name="TextureRect" type="TextureRect" parent="UI/Gameplay/Top/Info/Ammo"]
+[node name="TextureRect" type="TextureRect" parent="UI/Gameplay/Top/Info/Ammo" unique_id=385090769]
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -1587,7 +1590,7 @@ grow_vertical = 2
 texture = ExtResource("13_jkdf5")
 expand_mode = 2
 
-[node name="Label" type="Label" parent="UI/Gameplay/Top/Info/Ammo"]
+[node name="Label" type="Label" parent="UI/Gameplay/Top/Info/Ammo" unique_id=15941876]
 z_index = 1
 layout_mode = 1
 anchors_preset = 8
@@ -1606,7 +1609,7 @@ label_settings = SubResource("LabelSettings_k12tt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BG" type="ColorRect" parent="UI/Gameplay/Top/Info/Ammo"]
+[node name="BG" type="ColorRect" parent="UI/Gameplay/Top/Info/Ammo" unique_id=285630194]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1621,7 +1624,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="PlayerHealth" type="Control" parent="UI/Gameplay/Top/Info"]
+[node name="PlayerHealth" type="Control" parent="UI/Gameplay/Top/Info" unique_id=403064017]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1639,7 +1642,7 @@ bar_scene = ExtResource("28_aqgau")
 empty_bar_texture = ExtResource("17_b3802")
 full_bar_texture = ExtResource("18_fevyy")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Gameplay/Top/Info/PlayerHealth"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Gameplay/Top/Info/PlayerHealth" unique_id=459854048]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.078
@@ -1654,14 +1657,14 @@ grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
 
-[node name="Label" type="Label" parent="UI/Gameplay/Top/Info/PlayerHealth/HBoxContainer"]
+[node name="Label" type="Label" parent="UI/Gameplay/Top/Info/PlayerHealth/HBoxContainer" unique_id=339685073]
 layout_mode = 2
 text = "PLAYER"
 label_settings = SubResource("LabelSettings_r33sp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EnemyHealth" type="Control" parent="UI/Gameplay/Top/Info"]
+[node name="EnemyHealth" type="Control" parent="UI/Gameplay/Top/Info" unique_id=1055342983]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1678,7 +1681,7 @@ bar_scene = ExtResource("32_o1aky")
 empty_bar_texture = ExtResource("21_gt3je")
 full_bar_texture = ExtResource("22_3pmx8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/Gameplay/Top/Info/EnemyHealth"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Gameplay/Top/Info/EnemyHealth" unique_id=101497152]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.078
@@ -1692,14 +1695,14 @@ offset_bottom = 52.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="UI/Gameplay/Top/Info/EnemyHealth/HBoxContainer"]
+[node name="Label" type="Label" parent="UI/Gameplay/Top/Info/EnemyHealth/HBoxContainer" unique_id=824393966]
 layout_mode = 2
 text = "ENEMY"
 label_settings = SubResource("LabelSettings_r33sp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bottom" type="Control" parent="UI/Gameplay"]
+[node name="Bottom" type="Control" parent="UI/Gameplay" unique_id=97545668]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -1709,7 +1712,7 @@ offset_top = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Intermission" type="Control" parent="UI" node_paths=PackedStringArray("point_list_parent")]
+[node name="Intermission" type="Control" parent="UI" unique_id=876228252 node_paths=PackedStringArray("point_list_parent")]
 visible = false
 texture_filter = 1
 layout_mode = 3
@@ -1725,7 +1728,7 @@ mouse_filter = 2
 script = ExtResource("35_r33sp")
 point_list_parent = NodePath("Points")
 
-[node name="BG" type="ColorRect" parent="UI/Intermission"]
+[node name="BG" type="ColorRect" parent="UI/Intermission" unique_id=2022568958]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1734,7 +1737,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="UI/Intermission"]
+[node name="TextureRect" type="TextureRect" parent="UI/Intermission" unique_id=1366519853]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -1747,7 +1750,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_hdf80")
 
-[node name="Points" type="Control" parent="UI/Intermission"]
+[node name="Points" type="Control" parent="UI/Intermission" unique_id=1015293598]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1755,7 +1758,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="1" type="Control" parent="UI/Intermission/Points"]
+[node name="1" type="Control" parent="UI/Intermission/Points" unique_id=946125741]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1769,7 +1772,7 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="2" type="Control" parent="UI/Intermission/Points"]
+[node name="2" type="Control" parent="UI/Intermission/Points" unique_id=2088415511]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1783,26 +1786,24 @@ offset_bottom = -95.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Dummy" type="AnimatedSprite2D" parent="UI/Intermission"]
+[node name="Dummy" type="AnimatedSprite2D" parent="UI/Intermission" unique_id=284576924]
 position = Vector2(-73, 612)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_hdf80")
 autoplay = "default"
 frame_progress = 0.774523
 
-[node name="Bat" type="AnimatedSprite2D" parent="UI/Intermission"]
+[node name="Bat" type="AnimatedSprite2D" parent="UI/Intermission" unique_id=1284789706]
 position = Vector2(145, 362)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_jwpg7")
 autoplay = "default"
 frame_progress = 0.836382
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Intermission"]
-libraries = {
-&"": SubResource("AnimationLibrary_o1aky")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Intermission" unique_id=1143418501]
+libraries/ = SubResource("AnimationLibrary_o1aky")
 
-[node name="Debug" type="Control" parent="UI" node_paths=PackedStringArray("player_character", "camera", "camera_manager")]
+[node name="Debug" type="Control" parent="UI" unique_id=1197919928 node_paths=PackedStringArray("player_character", "camera", "camera_manager")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -1820,7 +1821,7 @@ camera = NodePath("../../Camera2D")
 zoom_factor = 1.0
 camera_manager = NodePath("../../Managers/CameraManager")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Debug"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Debug" unique_id=285378060]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1828,43 +1829,43 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Win" type="Button" parent="UI/Debug/VBoxContainer"]
+[node name="Win" type="Button" parent="UI/Debug/VBoxContainer" unique_id=84419883]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 29
 text = "Win Stage"
 
-[node name="Save" type="Button" parent="UI/Debug/VBoxContainer"]
+[node name="Save" type="Button" parent="UI/Debug/VBoxContainer" unique_id=501591278]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 29
 text = "Save Data"
 
-[node name="Toggle Music" type="Button" parent="UI/Debug/VBoxContainer"]
+[node name="Toggle Music" type="Button" parent="UI/Debug/VBoxContainer" unique_id=682327440]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 29
 text = "Toggle Music"
 
-[node name="Toggle Camera Zoom" type="Button" parent="UI/Debug/VBoxContainer"]
+[node name="Toggle Camera Zoom" type="Button" parent="UI/Debug/VBoxContainer" unique_id=936318979]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 29
 text = "Toggle Zoom"
 
-[node name="Super Speed" type="Button" parent="UI/Debug/VBoxContainer"]
+[node name="Super Speed" type="Button" parent="UI/Debug/VBoxContainer" unique_id=418734433]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Toggle Super Speed"
 
-[node name="Super Jump" type="Button" parent="UI/Debug/VBoxContainer"]
+[node name="Super Jump" type="Button" parent="UI/Debug/VBoxContainer" unique_id=1296482506]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "Toggle Super Jump"
 
-[node name="Go To Boss" type="Button" parent="UI/Debug/VBoxContainer"]
+[node name="Go To Boss" type="Button" parent="UI/Debug/VBoxContainer" unique_id=1461555071]
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 20
