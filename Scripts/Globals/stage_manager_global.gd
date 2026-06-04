@@ -51,7 +51,8 @@ func generate_new_level(new_index : int) -> void:
 
 func increase_current_level() -> void:
 	current_level_index = clampi(current_level_index + 1, 0, level_list.size() - 1)
-	SaveManager.overwrite_current_gameplay_data_values("CURRENT_LEVEL", current_level_index, true)
+	#SaveManager.overwrite_current_gameplay_data_values("CURRENT_LEVEL", current_level_index, true)
+	SaveManager.overwrite_current_savefile_data_values("CURRENT_LEVEL", current_level_index, true)
 
 # This function gets triggered when the player reaches the last camera path.
 func generate_end_event() -> void:

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://84muy8gt4l6e"]
+
+[ext_resource type="PackedScene" uid="uid://3pyhqlw0bo6c" path="res://Scenes/Levels/1_test_hall.tscn" id="1_1vtjm"]
+[ext_resource type="Script" uid="uid://wvhb66ctf5ai" path="res://Scripts/Resources/level_data_resource.gd" id="3_qhwx8"]
+
+[resource]
+script = ExtResource("3_qhwx8")
+level_scene = ExtResource("1_1vtjm")
+PlayerSpawnPosition = Vector2(-270, 40)
+LevelName = "Test  Hall"
+LevelMusicID = "MUS_VampireKiller"
+boss_theme_name = "MUS_Boss"
+metadata/_custom_type_script = "uid://wvhb66ctf5ai"
