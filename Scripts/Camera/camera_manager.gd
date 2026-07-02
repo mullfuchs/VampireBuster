@@ -32,15 +32,15 @@ func _process(delta: float) -> void:
 		camera.global_position += (transition_direction_vector * (delta * delta_multiplier))
 		var new_vector : Vector2 = (transition_to_position - camera.global_position).normalized()
 		
-		if (transition_direction_vector.dot(new_vector) != 1):
-			SignalBus.on_door_transition_finish.emit()
-			transitioning = false
-			current_path_index = transition_target_path_index
-			constrict_camera(transition_target_path_index)
-			SignalBus.on_trigger_new_path.emit(level_path_list[current_path_index])
+		##if (transition_direction_vector.dot(new_vector) != 1):
+		SignalBus.on_door_transition_finish.emit()
+		transitioning = false
+		current_path_index = transition_target_path_index
+		constrict_camera(transition_target_path_index)
+		SignalBus.on_trigger_new_path.emit(level_path_list[current_path_index])
 			
-			if (level_path_list[current_path_index].is_last_path):
-				SignalBus.on_reach_last_camera_path.emit()
+		if (level_path_list[current_path_index].is_last_path):
+			SignalBus.on_reach_last_camera_path.emit()
 	else:
 		match current_camera_direction:
 			CameraDirection.None: return
@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 		check_for_path_connections()
 
 func connect_signals() -> void:
-	SignalBus.on_level_generated.connect(get_paths)
+	#SignalBus.on_level_generated.connect(get_paths)
 	
 	SignalBus.on_door_transition_camera_transition_start.connect(transition_to_next_path)
 	
@@ -80,7 +80,7 @@ func disable_camera_follow(door : Door) -> void:
 	if (current_path_index == level_path_list.size() - 1): return
 
 func transition_to_next_path(target_camera_path_index : int) -> void:
-	if (current_path_index + 1 > level_path_list.size() - 1): return
+	##if (current_path_index + 1 > level_path_list.size() - 1): return
 	
 	transition_target_path_index = target_camera_path_index
 	
@@ -165,7 +165,7 @@ func next_path() -> void:
 	var next_path_index = clampi(current_path_index + 1, 0, level_path_list.size() - 1)
 	if (current_path_index == next_path_index): return
 	current_path_index = next_path_index
-	
+	print("next path selected")
 	constrict_camera(next_path_index)
 
 func previous_path() -> void:
@@ -227,6 +227,17 @@ func constrict_camera(index : int) -> void:
 
 func change_smoothing(result : bool) -> void:
 	camera.position_smoothing_enabled = result
+
+func add_path(path: Node):
+	level_path_list.append(path)
+	print("Camera Paths" + str(level_path_list))
+	
+func clear_paths():
+	level_path_list.clear()
+	
+func set_start_camera():
+	current_path_index = 0
+	constrict_camera(0)
 
 # Currently there's only support for 2 types of scrolling
 enum CameraDirection { None, Horizontal, Vertical }

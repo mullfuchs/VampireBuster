@@ -187,7 +187,7 @@ _data = {
 &"start": SubResource("Animation_jwpg7")
 }
 
-[sub_resource type="Resource" id="Resource_536cc"]
+[sub_resource type="Resource" id="Resource_o1aky"]
 resource_local_to_scene = true
 script = ExtResource("10_aqgau")
 Speed = 80.0
@@ -1358,6 +1358,7 @@ color = Color(0, 0, 0, 0)
 libraries/ = SubResource("AnimationLibrary_aqgau")
 
 [node name="CameraManager" type="Node" parent="Managers" unique_id=971626964 node_paths=PackedStringArray("camera", "level_parent", "player")]
+unique_name_in_owner = true
 script = ExtResource("10_neg2b")
 camera = NodePath("../../Camera2D")
 level_parent = NodePath("../../Level")
@@ -1374,7 +1375,7 @@ bank_paths = ["res://Banks/Desktop/Master.strings.bank", "res://Banks/Desktop/Ma
 [node name="Player" parent="." unique_id=1209957010 instance=ExtResource("8_536cc")]
 z_index = 5
 position = Vector2(-272, 40)
-player_resource = SubResource("Resource_536cc")
+player_resource = SubResource("Resource_o1aky")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=172698032]
 

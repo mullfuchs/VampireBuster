@@ -65,7 +65,6 @@ position = Vector2(2480, 16)
 [node name="Blocks" type="Node2D" parent="Entities/Whipables" unique_id=615355733]
 
 [node name="Stairs" type="Node2D" parent="Entities" unique_id=1225108698]
-visible = false
 
 [node name="6-R-Stair" parent="Entities/Stairs" unique_id=321450650 instance=ExtResource("2_8ojd1")]
 z_index = 2
@@ -215,6 +214,7 @@ shape = SubResource("RectangleShape2D_jd3ge")
 debug_color = Color(0.631477, 0.00156579, 0.800223, 0.42)
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1888374885]
+visible = false
 
 [node name="Spikes" type="TileMapLayer" parent="TileMap" unique_id=1102166491]
 z_index = 1

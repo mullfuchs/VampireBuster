@@ -1,0 +1,43 @@
+extends Node
+### when the level starts, pick from a selection of levels
+### for now levels are stored in arrays 
+### place the levels, then the doors and camera things
+
+@export var LevelRooms: Array[PackedScene]
+
+var NextRoomLoc: Vector2
+var CameraManager: Node
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	CameraManager = get_tree().root.get_node("Main/Managers/CameraManager")
+	SignalBus.on_level_generated.connect(_generateRoom)
+	_generateRoom()
+	pass
+
+
+func _generateRoom() -> void:
+	CameraManager.clear_paths()
+	var NextRoom
+	for room in LevelRooms:
+		NextRoom = _spawnRoom(NextRoomLoc, room)
+		NextRoomLoc = NextRoom.get_node("NextRoom").global_position
+	CameraManager.set_start_camera()
+		
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _spawnRoom(location: Vector2, room: PackedScene):
+	print("Next Room Location" + str(NextRoomLoc))
+	var currentRoom = room.instantiate()
+	currentRoom.global_position = location
+	add_child(currentRoom)
+	NextRoomLoc = Vector2(location.x + 1300, location.y)
+	var cameraPath = currentRoom.get_node("CameraPath")
+	CameraManager.add_path(cameraPath)
+	print("Spawned room at " + str(currentRoom.global_position))
+	return currentRoom
+	### gonna have to put some logic in here for paths
+	## get the path, then rename it, then call the "build paths" function somehow
+	

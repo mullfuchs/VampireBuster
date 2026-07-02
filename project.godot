@@ -63,6 +63,7 @@ folder_colors={
 
 player=""
 level=""
+CameraPath=""
 
 [input]
 
