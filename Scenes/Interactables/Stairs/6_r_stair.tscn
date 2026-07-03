@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl2f4low7gcps"]
+[gd_scene format=3 uid="uid://cl2f4low7gcps"]
 
 [ext_resource type="Texture2D" uid="uid://d2v18g5cxpbcj" path="res://Sprites/Environment/StairComplete.png" id="1_57ds3"]
 [ext_resource type="Texture2D" uid="uid://b85nyqj1626y4" path="res://Sprites/Environment/StairsDecorationMiddle.png" id="2_8rafe"]

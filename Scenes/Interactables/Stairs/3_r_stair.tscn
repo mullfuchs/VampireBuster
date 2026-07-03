@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cin48jiiawksp"]
+
+[ext_resource type="Texture2D" uid="uid://d2v18g5cxpbcj" path="res://Sprites/Environment/StairComplete.png" id="1_qwc4i"]
+[ext_resource type="Texture2D" uid="uid://b85nyqj1626y4" path="res://Sprites/Environment/StairsDecorationMiddle.png" id="2_oy0qs"]
+[ext_resource type="Texture2D" uid="uid://cbc2kip13r0xn" path="res://Sprites/Environment/Stair.png" id="3_q0ypt"]
+[ext_resource type="Texture2D" uid="uid://fw45t1s2gqfm" path="res://Sprites/Environment/StairsEnd.png" id="4_ih37d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sqoif"]
+radius = 4.0
+
+[sub_resource type="Curve2D" id="Curve2D_jd3ge"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, -8, 0, 0, 0, 0, 48, -48)
+}
+point_count = 3
+
+[node name="3-R-Stair" type="Node2D" unique_id=1966003040]
+
+[node name="Sprites" type="Node2D" parent="." unique_id=580680573]
+visible = false
+
+[node name="InitialStep" type="Sprite2D" parent="Sprites" unique_id=434709868]
+position = Vector2(0, -8)
+texture = ExtResource("1_qwc4i")
+
+[node name="Rail" type="Sprite2D" parent="Sprites" unique_id=1732082438]
+position = Vector2(8, -24)
+texture = ExtResource("2_oy0qs")
+
+[node name="Rail2" type="Sprite2D" parent="Sprites" unique_id=604405895]
+position = Vector2(24, -40)
+texture = ExtResource("2_oy0qs")
+
+[node name="Step2" type="Sprite2D" parent="Sprites" unique_id=672367120]
+position = Vector2(24, -24)
+texture = ExtResource("3_q0ypt")
+
+[node name="Step3" type="Sprite2D" parent="Sprites" unique_id=1513439742]
+position = Vector2(40, -40)
+texture = ExtResource("3_q0ypt")
+
+[node name="End" type="Sprite2D" parent="Sprites" unique_id=1458871619]
+position = Vector2(48, -56)
+texture = ExtResource("4_ih37d")
+
+[node name="Triggers" type="Node2D" parent="." unique_id=2047838711]
+
+[node name="Start" type="Area2D" parent="Triggers" unique_id=1770550593]
+collision_layer = 2048
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Start" unique_id=429625050]
+shape = SubResource("CircleShape2D_sqoif")
+debug_color = Color(0.767316, 0, 0.179415, 0.42)
+
+[node name="End" type="Area2D" parent="Triggers" unique_id=1443928729]
+position = Vector2(48, -48)
+collision_layer = 2048
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/End" unique_id=2136713056]
+shape = SubResource("CircleShape2D_sqoif")
+debug_color = Color(0.767316, 0, 0.179415, 0.42)
+
+[node name="Path" type="Path2D" parent="." unique_id=582727083]
+curve = SubResource("Curve2D_jd3ge")
+
+[node name="Follow" type="PathFollow2D" parent="Path" unique_id=502012011]
+rotation = -0.7853982
+loop = false
