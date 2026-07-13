@@ -10,7 +10,10 @@
 [ext_resource type="Script" uid="uid://plo3dhuwq6cp" path="res://Scripts/Data Class/camera_path.gd" id="9_t3ma4"]
 [ext_resource type="Script" uid="uid://b7j0s06e6gnuv" path="res://Scenes/Levels/level_generator.gd" id="10_3wnkr"]
 [ext_resource type="PackedScene" uid="uid://cdfp01m75v80d" path="res://Scenes/Levels/Rooms/EntranceHall_Easy01.tscn" id="11_43w2n"]
+[ext_resource type="PackedScene" uid="uid://n85ammk1vpkl" path="res://Scenes/Levels/Rooms/Hall_Easy03.tscn" id="11_oxkgu"]
+[ext_resource type="PackedScene" uid="uid://cag6ud4t1f122" path="res://Scenes/Levels/Rooms/Hall_Easy04.tscn" id="12_6j3fx"]
 [ext_resource type="PackedScene" uid="uid://mnqeqfvyv25" path="res://Scenes/Levels/Rooms/Hall_Easy02.tscn" id="12_oxkgu"]
+[ext_resource type="PackedScene" uid="uid://cnqso7ox83t4r" path="res://Scenes/Levels/Rooms/End_Hall_Easy01.tscn" id="13_oxkgu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8slq"]
 size = Vector2(128, 16)
@@ -222,7 +225,9 @@ script = ExtResource("9_t3ma4")
 
 [node name="LevelGen" type="Node2D" parent="." unique_id=129835713]
 script = ExtResource("10_3wnkr")
-LevelRooms = Array[PackedScene]([ExtResource("11_43w2n"), ExtResource("12_oxkgu")])
+LevelRooms = Array[PackedScene]([ExtResource("12_oxkgu"), ExtResource("11_oxkgu"), ExtResource("12_6j3fx")])
+StartingRooms = Array[PackedScene]([ExtResource("11_43w2n")])
+EndingRooms = Array[PackedScene]([ExtResource("13_oxkgu")])
 
 [connection signal="area_entered" from="StaticLevel/Entities/Warps/Warp_0_0/Area" to="StaticLevel/Entities/Warps/Warp_0_0" method="_on_area_entered"]
 [connection signal="area_entered" from="StaticLevel/Entities/Warps/Warp_0_1/Area" to="StaticLevel/Entities/Warps/Warp_0_1" method="_on_area_entered"]
