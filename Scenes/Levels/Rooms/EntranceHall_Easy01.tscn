@@ -80,3 +80,11 @@ position = Vector2(1504, 0)
 position = Vector2(0, -2)
 curve = SubResource("Curve2D_etohu")
 script = ExtResource("3_fgbu6")
+
+[node name="EnemySpawnLayouts" type="Node2D" parent="." unique_id=1495326777]
+
+[node name="EasySpawn" type="Node2D" parent="EnemySpawnLayouts" unique_id=1029127225]
+
+[node name="MediumSpawn" type="Node2D" parent="EnemySpawnLayouts" unique_id=109458635]
+
+[node name="HardSpawn" type="Node2D" parent="EnemySpawnLayouts" unique_id=2059542399]

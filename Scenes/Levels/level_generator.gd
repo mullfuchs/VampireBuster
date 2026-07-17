@@ -8,6 +8,10 @@ extends Node
 @export var StartingRooms: Array[PackedScene]
 @export var EndingRooms: Array[PackedScene]
 
+@export var EasyEnemies: Array[PackedScene]
+@export var MediumEnemies: Array[PackedScene]
+@export var HardEnemies: Array[PackedScene]
+
 var NextRoomLoc: Vector2
 var CameraManager: Node
 
@@ -57,3 +61,10 @@ func _spawnRoom(location: Vector2, room: PackedScene):
 	### gonna have to put some logic in here for paths
 	## get the path, then rename it, then call the "build paths" function somehow
 	
+func _spawnEnemies(room: PackedScene):
+	### need a way to get all the points from a layout
+	
+	pass
+### to add enemies we'll need a few things
+### there is gonna be a list of enemy spawn layouts? Each layout has point 2Ds in it. 
+### for enemies we'll have easy/medium/and hard. these guys are stored in an array in levelgen. after a layout is picked 

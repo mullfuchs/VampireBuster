@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=13 format=3 uid="uid://1ljs6o2v5nn0"]
+[gd_resource type="BehaviorTree" format=3 uid="uid://1ljs6o2v5nn0"]
 
 [ext_resource type="Script" uid="uid://bwmnl2wkemyrt" path="res://ai/tasks/LinearMove2D.gd" id="1_gaio8"]
 [ext_resource type="Script" uid="uid://c51as8e0wodu1" path="res://ai/tasks/HasHitWall2D.gd" id="2_glfdt"]
@@ -37,7 +37,6 @@ operation = 3
 
 [sub_resource type="BTAction" id="BTAction_qpw4x"]
 script = ExtResource("3_dlt0a")
-spriteLooksRight = false
 
 [sub_resource type="BTSequence" id="BTSequence_vtrff"]
 children = [SubResource("BTCondition_r5vdh"), SubResource("BTSetVar_svoa4"), SubResource("BTAction_qpw4x")]
