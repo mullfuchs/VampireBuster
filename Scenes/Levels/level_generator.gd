@@ -17,6 +17,12 @@ var CameraManager: Node
 
 var doorIndex: int = 0
 
+var EasySpawns: Node
+var MediumSpawns: Node
+var HardSpawns: Node
+
+enum roomLayout{EASY, MEDIUM, HARD}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	CameraManager = get_tree().root.get_node("Main/Managers/CameraManager")
@@ -57,12 +63,36 @@ func _spawnRoom(location: Vector2, room: PackedScene):
 	doorIndex += 1
 	var currentDoor = currentRoom.get_node("Door/Door")
 	currentDoor.target_camera_path_index = doorIndex
-	return currentRoom
-	### gonna have to put some logic in here for paths
-	## get the path, then rename it, then call the "build paths" function somehow
 	
-func _spawnEnemies(room: PackedScene):
+	if(currentRoom.get_node("EnemySpawnLayouts") != null):
+		_spawnEnemies(currentRoom, doorIndex)
+		
+	return currentRoom
+	
+func _spawnEnemies(room: Node, roomIndex: int):
 	### need a way to get all the points from a layout
+	### how do we determine if a level is spawned with an easy, normal, or hard spawn?
+	## right now it escalates from easy to hard as the level progresses but this should be more sophisticated
+	var spawns: Node
+	var enemy: PackedScene
+	
+	if (roomIndex >= 3):
+		spawns = room.get_node("EnemySpawnLayouts/HardSpawn")
+	elif (roomIndex >= 2):
+		spawns = room.get_node("EnemySpawnLayouts/MediumSpawn")
+	else:
+		spawns = room.get_node("EnemySpawnLayouts/EasySpawn")
+	
+	for spawn: Node in spawns.get_children():
+		if (roomIndex >= 3):
+			enemy = HardEnemies.pick_random()
+		elif (roomIndex >= 2):
+			enemy = MediumEnemies.pick_random()
+		else:
+			enemy = EasyEnemies.pick_random()
+		var spawnedEnemy = enemy.instantiate()
+		spawnedEnemy.global_position = spawn.global_position
+		add_child(spawnedEnemy)
 	
 	pass
 ### to add enemies we'll need a few things

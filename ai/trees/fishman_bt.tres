@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=77 format=3 uid="uid://dmegg6io2g0ef"]
+[gd_resource type="BehaviorTree" format=3 uid="uid://dmegg6io2g0ef"]
 
 [ext_resource type="Script" uid="uid://bxvhydxhawgh8" path="res://ai/tasks/action_play_sound.gd" id="1_8fewt"]
 [ext_resource type="PackedScene" uid="uid://b4ln2drx4wgo0" path="res://Scenes/Entities/Particles/splash_particle.tscn" id="1_kuxiy"]
@@ -84,7 +84,6 @@ value = SubResource("BBVariant_kuxiy")
 script = ExtResource("2_8fewt")
 _packedScene = ExtResource("1_kuxiy")
 _samePosition = true
-_positionKey = ""
 
 [sub_resource type="BTAction" id="BTAction_gumku"]
 script = ExtResource("1_vebr7")

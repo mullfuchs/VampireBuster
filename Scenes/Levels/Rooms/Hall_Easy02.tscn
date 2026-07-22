@@ -79,3 +79,39 @@ position = Vector2(1136, 72)
 
 [node name="NextRoom" type="Node2D" parent="." unique_id=1631658262]
 position = Vector2(1434, -1)
+
+[node name="EnemySpawnLayouts" type="Node2D" parent="." unique_id=626113190]
+
+[node name="EasySpawn" type="Node2D" parent="EnemySpawnLayouts" unique_id=866796989]
+
+[node name="Spawn" type="Marker2D" parent="EnemySpawnLayouts/EasySpawn" unique_id=1451324138]
+position = Vector2(312, 19)
+
+[node name="Spawn2" type="Marker2D" parent="EnemySpawnLayouts/EasySpawn" unique_id=676459102]
+position = Vector2(663, 18)
+
+[node name="MediumSpawn" type="Node2D" parent="EnemySpawnLayouts" unique_id=1597962316]
+
+[node name="Spawn" type="Marker2D" parent="EnemySpawnLayouts/MediumSpawn" unique_id=1982656287]
+position = Vector2(312, 19)
+
+[node name="Spawn2" type="Marker2D" parent="EnemySpawnLayouts/MediumSpawn" unique_id=2076328051]
+position = Vector2(663, 18)
+
+[node name="Spawn3" type="Marker2D" parent="EnemySpawnLayouts/MediumSpawn" unique_id=322604891]
+position = Vector2(794, 20)
+
+[node name="HardSpawn" type="Node2D" parent="EnemySpawnLayouts" unique_id=951051734]
+position = Vector2(229, -13)
+
+[node name="Spawn" type="Marker2D" parent="EnemySpawnLayouts/HardSpawn" unique_id=61866534]
+position = Vector2(312, 19)
+
+[node name="Spawn2" type="Marker2D" parent="EnemySpawnLayouts/HardSpawn" unique_id=1248312985]
+position = Vector2(663, 18)
+
+[node name="Spawn3" type="Marker2D" parent="EnemySpawnLayouts/HardSpawn" unique_id=15721872]
+position = Vector2(802, 28)
+
+[node name="Spawn4" type="Marker2D" parent="EnemySpawnLayouts/HardSpawn" unique_id=1508268360]
+position = Vector2(354, -9)

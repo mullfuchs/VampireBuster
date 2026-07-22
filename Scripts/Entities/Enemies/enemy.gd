@@ -33,7 +33,7 @@ var visible_screen_node_path : NodePath
 var was_generated : bool = false
 
 func _ready() -> void:
-	visible_screen_node_path = $VisibleOnScreenEnabler2D.enable_node_path
+	##visible_screen_node_path = $VisibleOnScreenEnabler2D.enable_node_path
 	
 	health_component.set_health(data.starting_health)
 	blackboard = behavior_player.blackboard

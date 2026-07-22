@@ -85,6 +85,34 @@ script = ExtResource("3_fgbu6")
 
 [node name="EasySpawn" type="Node2D" parent="EnemySpawnLayouts" unique_id=1029127225]
 
+[node name="Spawn" type="Marker2D" parent="EnemySpawnLayouts/EasySpawn" unique_id=1674236568]
+position = Vector2(312, 19)
+
+[node name="Spawn2" type="Marker2D" parent="EnemySpawnLayouts/EasySpawn" unique_id=231730970]
+position = Vector2(663, 18)
+
 [node name="MediumSpawn" type="Node2D" parent="EnemySpawnLayouts" unique_id=109458635]
 
+[node name="Spawn" type="Marker2D" parent="EnemySpawnLayouts/MediumSpawn" unique_id=1592582194]
+position = Vector2(312, 19)
+
+[node name="Spawn2" type="Marker2D" parent="EnemySpawnLayouts/MediumSpawn" unique_id=1610320290]
+position = Vector2(663, 18)
+
+[node name="Spawn3" type="Marker2D" parent="EnemySpawnLayouts/MediumSpawn" unique_id=1138458236]
+position = Vector2(794, 20)
+
 [node name="HardSpawn" type="Node2D" parent="EnemySpawnLayouts" unique_id=2059542399]
+position = Vector2(229, -13)
+
+[node name="Spawn" type="Marker2D" parent="EnemySpawnLayouts/HardSpawn" unique_id=752563838]
+position = Vector2(312, 19)
+
+[node name="Spawn2" type="Marker2D" parent="EnemySpawnLayouts/HardSpawn" unique_id=690265121]
+position = Vector2(663, 18)
+
+[node name="Spawn3" type="Marker2D" parent="EnemySpawnLayouts/HardSpawn" unique_id=673458784]
+position = Vector2(802, 28)
+
+[node name="Spawn4" type="Marker2D" parent="EnemySpawnLayouts/HardSpawn" unique_id=243903051]
+position = Vector2(354, -9)

@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=10 format=3 uid="uid://b6hr34p6u5qn0"]
+[gd_resource type="BehaviorTree" format=3 uid="uid://b6hr34p6u5qn0"]
 
 [ext_resource type="Script" uid="uid://jx36abkf7xdb" path="res://ai/tasks/FlipSpriteFromDirection.gd" id="1_7yoih"]
 [ext_resource type="Script" uid="uid://bwmnl2wkemyrt" path="res://ai/tasks/LinearMove2D.gd" id="1_h2uwi"]
@@ -18,7 +18,6 @@ var/speed/hint_string = ""
 
 [sub_resource type="BTAction" id="BTAction_1570e"]
 script = ExtResource("1_7yoih")
-spriteLooksRight = false
 
 [sub_resource type="BTAction" id="BTAction_jvla6"]
 script = ExtResource("1_h2uwi")
